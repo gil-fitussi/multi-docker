@@ -9,17 +9,17 @@ script:
   - docker run -e CI=true gil/react-test npm test
 
 after_success:
-  - docker build -t gil/multi-client ./client
-  - docker build -t gil/multi-nginx ./nginx
-  - docker build -t gil/multi-server ./server
-  - docker build -t gil/multi-worker ./worker
+  - docker build -t gigo1985/multi-client ./client
+  - docker build -t gigo1985/multi-nginx ./nginx
+  - docker build -t gigo1985/multi-server ./server
+  - docker build -t gigo1985/multi-worker ./worker
 
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # Take those images and push them to docker hub
-  - docker push gil/multi-client
-  - docker push gil/multi-nginx
-  - docker push gil/multi-server
-  - docker push gil/multi-worker
+  - docker push gigo1985/multi-client
+  - docker push gigo1985/multi-nginx
+  - docker push gigo1985/multi-server
+  - docker push gigo1985/multi-worker
   
